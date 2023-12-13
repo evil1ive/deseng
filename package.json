@@ -4,6 +4,11 @@
         "packages/*"
     ],
     "scripts": {
+        "prepare": "husky install",
         "format": "prettier --write 'packages'"
+    },
+    "devDependencies": {
+        "git-format-staged": "^3.0.0",
+        "husky": "^8.0.3"
     }
 }
