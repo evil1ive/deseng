@@ -1,5 +1,8 @@
 {
-    "name": "client",
+    "name": "@deseng/client",
     "version": "1.0.0",
-    "license": "MIT"
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint"
+    }
 }
