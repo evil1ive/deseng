@@ -1,4 +1,5 @@
 {
+    "name": "deseng",
     "private": true,
     "workspaces": [
         "packages/*"
