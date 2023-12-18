@@ -3,6 +3,7 @@
 @import "./colors";
 
 :root {
+  --tabbar-height: 70px;
 }
 
 * {
@@ -12,7 +13,8 @@
 }
 
 body {
- font-family: 'Noto Sans', system-ui;
+  font-family: 'Noto Sans', system-ui;
+  overflow: hidden;
 }
 
 #root {
@@ -20,4 +22,8 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--color-background-secondary);
+}
+
+main {
+  overflow: auto;
 }
