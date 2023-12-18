@@ -15,25 +15,25 @@ export const Tabbar: FC = () => {
                 icon={<IconHome />}
                 label={"Главная"}
                 onClick={() => navigate("/")}
-                active={pathname === "/"}
+                selected={pathname === "/"}
             />
             <TabbarItem
                 icon={<IconPen />}
                 label={"Задания"}
                 onClick={() => navigate("/tasks")}
-                active={pathname === "/tasks"}
+                selected={pathname === "/tasks"}
             />
             <TabbarItem
                 icon={<IconBook />}
                 label={"Словарь"}
                 onClick={() => navigate("/dictionary")}
-                active={pathname === "/dictionary"}
+                selected={pathname === "/dictionary"}
             />
             <TabbarItem
                 icon={<IconDots />}
                 label={"Настройки"}
                 onClick={() => navigate("/settings")}
-                active={pathname === "/settings"}
+                selected={pathname === "/settings"}
             />
         </div>
     )
@@ -42,13 +42,13 @@ export const Tabbar: FC = () => {
 type TabbarItemProps = {
     label: string
     icon: ReactNode
-    active?: boolean
+    selected?: boolean
     onClick?: () => void
 }
 
-const TabbarItem: FC<TabbarItemProps> = ({ icon, label, active = false, onClick }) => {
+const TabbarItem: FC<TabbarItemProps> = ({ icon, label, selected = false, onClick }) => {
     return (
-        <button className={cn(Style.item, { [Style.item__active]: active })} onClick={onClick}>
+        <button className={cn(Style.item, { [Style.item__selected]: selected })} onClick={onClick}>
             {icon}
             <span>{label}</span>
         </button>
