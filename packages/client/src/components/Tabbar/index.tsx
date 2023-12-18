@@ -31,9 +31,9 @@ export const Tabbar: FC = () => {
             />
             <TabbarItem
                 icon={<IconDots />}
-                label={"Настройки"}
-                onClick={() => navigate("/settings")}
-                selected={pathname === "/settings"}
+                label={"Меню"}
+                onClick={() => navigate("/menu")}
+                selected={pathname === "/menu"}
             />
         </div>
     )
