@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom"
+import { MainPage } from "pages/main"
 
 import "styles/global.scss"
 
 const App = () => (
     <Routes>
         <Route path={"/"}>
-            <Route index element={<div>Hello world</div>} />
+            <Route index element={<MainPage />} />
         </Route>
     </Routes>
 )
