@@ -1,1 +1,5 @@
+export { default as IconBook } from "./Book.svg?react"
 export { default as IconChevronRight } from "./ChevronRight.svg?react"
+export { default as IconDots } from "./Dots.svg?react"
+export { default as IconHome } from "./Home.svg?react"
+export { default as IconPen } from "./Pen.svg?react"

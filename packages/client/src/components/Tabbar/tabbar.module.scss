@@ -1,0 +1,36 @@
+.tabbar {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin-top: auto;
+
+  height: 60px;
+
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  outline: none;
+  border: none;
+
+  height: 48px;
+
+  color: #383838;
+
+  &__active{
+    color: red;
+  }
+
+  > svg {
+    width: 28px;
+    height: 28px;
+  }
+
+}
