@@ -10,7 +10,7 @@ export const Tabbar: FC = () => {
     const navigate = useNavigate()
 
     return (
-        <div className={Style.tabbar}>
+        <nav className={Style.tabbar}>
             <TabbarItem
                 icon={<IconHome />}
                 label={"Главная"}
@@ -35,7 +35,7 @@ export const Tabbar: FC = () => {
                 onClick={() => navigate("/menu")}
                 selected={pathname === "/menu"}
             />
-        </div>
+        </nav>
     )
 }
 

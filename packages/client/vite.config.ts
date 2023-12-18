@@ -3,9 +3,19 @@ import { defineConfig } from "vite"
 import svgr from "vite-plugin-svgr"
 import tsconfigPaths from "vite-tsconfig-paths"
 
+import injectAttributes from "./plugins/injectAttributes"
+
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react(), tsconfigPaths(), svgr()],
+    plugins: [
+        react(),
+        tsconfigPaths(),
+        svgr(),
+        injectAttributes((version) => ({
+            version: `Версия: ${version}`,
+            "build-date": new Date().toISOString(),
+        })),
+    ],
     server: {
         host: "0.0.0.0",
         proxy: {

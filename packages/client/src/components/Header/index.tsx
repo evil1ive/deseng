@@ -13,7 +13,7 @@ const EmptySlot = () => <div className={Style.emptyslot} />
 
 export const Header: FC<HeaderProps> = (props) => {
     return (
-        <div className={Style.header}>
+        <header className={Style.header}>
             {props.backButton ? (
                 <button className={Style.backbutton}>
                     <IconChevronRight />
@@ -23,6 +23,6 @@ export const Header: FC<HeaderProps> = (props) => {
             )}
             {props.children}
             {props.after ?? <EmptySlot />}
-        </div>
+        </header>
     )
 }
