@@ -20,7 +20,18 @@
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "paths": {
+            "components": ["./src/components/index.ts"],
+            "hooks": ["./src/hooks/index.tsx"],
+            "assets/*": ["./src/assets/*"],
+            "pages/*": ["./src/pages/*"],
+            "pages": ["./src/pages/index.ts"],
+            "store/*": ["./src/store/*"],
+            "store": ["./src/store/index.ts"],
+            "utils/*": ["./src/utils/*"],
+            "styles/*": ["./src/styles/*"]
+        }
     },
     "include": [
         "src"
