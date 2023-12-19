@@ -2,8 +2,8 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import svgr from "vite-plugin-svgr"
 import tsconfigPaths from "vite-tsconfig-paths"
-
 import injectAttributes from "./plugins/injectAttributes"
+import { VitePWA } from "vite-plugin-pwa"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +15,7 @@ export default defineConfig({
             version: `Версия: ${version}`,
             "build-date": new Date().toISOString(),
         })),
+        VitePWA({ registerType: "autoUpdate" }),
     ],
     server: {
         host: "0.0.0.0",
