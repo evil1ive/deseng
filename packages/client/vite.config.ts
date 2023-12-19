@@ -20,6 +20,11 @@ export default defineConfig({
             devOptions: {
                 enabled: true,
             },
+            manifest: {
+                name: "DesEng",
+                short_name: "DesEng",
+                theme_color: "#ffffff",
+            },
         }),
     ],
     server: {
