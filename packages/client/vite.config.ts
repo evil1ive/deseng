@@ -15,7 +15,12 @@ export default defineConfig({
             version: `Версия: ${version}`,
             "build-date": new Date().toISOString(),
         })),
-        VitePWA({ registerType: "autoUpdate" }),
+        VitePWA({
+            registerType: "autoUpdate",
+            devOptions: {
+                enabled: true,
+            },
+        }),
     ],
     server: {
         host: "0.0.0.0",
