@@ -1,56 +1,40 @@
-import { FC, ReactNode } from "react"
+import { FC } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { IconBook, IconDots, IconHome, IconPen } from "assets/icons"
-import cn from "classnames"
 
 import Style from "./tabbar.module.scss"
+import { TabBarItem } from "components/tab-bar-item"
 
-export const Tabbar: FC = () => {
+export const TabBar: FC = () => {
     const { pathname } = useLocation()
     const navigate = useNavigate()
 
     return (
         <nav className={Style.tabbar}>
-            <TabbarItem
+            <TabBarItem
                 icon={<IconHome />}
                 label={"Главная"}
                 onClick={() => navigate("/")}
                 selected={pathname === "/"}
             />
-            <TabbarItem
+            <TabBarItem
                 icon={<IconPen />}
                 label={"Задания"}
                 onClick={() => navigate("/tasks")}
                 selected={pathname === "/tasks"}
             />
-            <TabbarItem
+            <TabBarItem
                 icon={<IconBook />}
                 label={"Словарь"}
                 onClick={() => navigate("/dictionary")}
                 selected={pathname === "/dictionary"}
             />
-            <TabbarItem
+            <TabBarItem
                 icon={<IconDots />}
                 label={"Меню"}
                 onClick={() => navigate("/menu")}
                 selected={pathname === "/menu"}
             />
         </nav>
-    )
-}
-
-type TabbarItemProps = {
-    label: string
-    icon: ReactNode
-    selected?: boolean
-    onClick?: () => void
-}
-
-const TabbarItem: FC<TabbarItemProps> = ({ icon, label, selected = false, onClick }) => {
-    return (
-        <button className={cn(Style.item, { [Style.item__selected]: selected })} onClick={onClick}>
-            {icon}
-            <span>{label}</span>
-        </button>
     )
 }
