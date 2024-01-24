@@ -1,8 +1,8 @@
 import { FC } from "react"
 import { Card } from "pages/main/components/Card"
 
-import { Header } from "components/Header"
-import { Page } from "components/Page"
+import { Header } from "../../components/header"
+import { Page } from "../../components/page"
 
 import Style from "./main.module.scss"
 
