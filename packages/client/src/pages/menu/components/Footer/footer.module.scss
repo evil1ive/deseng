@@ -1,13 +1,11 @@
-.footer{
+.footer {
+    margin-top: auto;
+    margin-bottom: 5px;
 
-  margin-top: auto;
-  margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-weight: lighter;
-
+    font-weight: lighter;
 }

@@ -1,0 +1,13 @@
+{
+    "users": [{ "login": "", "hash": "", "salt": "" }],
+    "tasks": {
+        "easy": [],
+        "medium": [],
+        "hard": []
+    },
+    "dictionary": {
+        "easy": [],
+        "medium": [],
+        "hard": []
+    }
+}

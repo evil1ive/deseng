@@ -1,18 +1,18 @@
 .tabbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
-  margin-top: auto;
+    margin-top: auto;
 
-  height: 60px;
+    height: 60px;
 
-  background: var(--color-background);
+    background: var(--color-background);
 
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }

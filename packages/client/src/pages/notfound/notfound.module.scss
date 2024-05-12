@@ -1,18 +1,16 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    gap: 16px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70%;
-  gap: 16px;
+    img {
+        width: 256px;
+    }
 
-  img {
-    width: 256px;
-  }
-
-  span {
-    color: var(--color-primary);
-  }
-
+    span {
+        color: var(--color-primary);
+    }
 }

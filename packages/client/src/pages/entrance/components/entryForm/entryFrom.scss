@@ -1,0 +1,117 @@
+.form-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        width: 340px;
+
+        .request-status {
+            margin: 20px 0 0 0;
+            height: 22px;
+        }
+
+        input {
+            width: 100%;
+            height: 50px;
+            font-size: 14px;
+            margin: 17px 0;
+            padding: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #c7c7c7;
+            background-color: inherit;
+        }
+
+        input.required,
+        input.minLength,
+        input.maxLength,
+        input.validate {
+            border: 1px solid red;
+        }
+
+        div {
+            position: relative;
+            width: 100%;
+        }
+
+        div::after {
+            color: red;
+            font-size: 14px;
+            position: absolute;
+            left: 2px;
+            top: 70px;
+            text-wrap: nowrap;
+        }
+
+        div.required::after {
+            content: "Это поле обязательно";
+        }
+
+        div.minLength::after {
+            content: "Слишком мало символов";
+        }
+
+        div.maxLength::after {
+            content: "Слишком много символов";
+        }
+
+        div.validate::after {
+            content: 'Используйте латиницу цифры и "_"';
+            text-wrap: wrap;
+        }
+    }
+
+    .authorizate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .registrate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        margin: 20px 0 0 0;
+
+        button {
+            width: 340px;
+            height: 40px;
+            background-color: var(--color-button-secondary);
+            color: #ffffff;
+            border: 0;
+            border-radius: 7px;
+        }
+
+        button:active {
+            border: 1px solid var(--color-text-button-inactive-secondary);
+            color: var(--color-text-button-inactive-secondary);
+        }
+
+        .submit-button {
+            background-color: var(--color-button-primary);
+        }
+
+        .submit-button:active {
+            border: 1px solid var(--color-text-button-inactive-primary);
+            color: var(--color-text-button-inactive-primary);
+        }
+    }
+}

@@ -1,30 +1,29 @@
 .item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  background: none;
-  outline: none;
-  border: none;
+    background: none;
+    outline: none;
+    border: none;
 
-  height: 48px;
+    height: 48px;
 
-  color: #383838;
+    color: #383838;
 
-  transition: all 300ms;
+    transition: all 300ms;
 
-  &:active {
-    scale: 1.05;
-  }
+    &:active {
+        scale: 1.05;
+    }
 
-  &__selected {
-    color: var(--color-primary);
-  }
+    &__selected {
+        color: var(--color-primary);
+    }
 
-  > svg {
-    width: 28px;
-    height: 28px;
-  }
-
+    > svg {
+        width: 28px;
+        height: 28px;
+    }
 }
