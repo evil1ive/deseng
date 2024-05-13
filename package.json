@@ -21,5 +21,10 @@
         "eslint-plugin-simple-import-sort": "^10.0.0",
         "git-format-staged": "^3.0.0",
         "husky": "^8.0.3"
+    },
+    "commitlint": {
+        "extends": [
+          "@commitlint/config-conventional"
+        ]
     }
 }

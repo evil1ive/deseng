@@ -9,7 +9,8 @@ import { FC, useState } from "react"
 import "styles/global.scss"
 
 export const Entry: FC<UserProps> = (props) => {
-    if (localStorage.userLogin + 57600000 > Date.now()) {
+    
+    if ((Number(localStorage.userLogin) + 57600000) > Date.now()) {
     } else {
         return <EntrancePage log={props.log} setLogin={props.setLogin}></EntrancePage>
     }
@@ -20,7 +21,7 @@ const App = () => {
     return (
         <Routes>
             <Route path={""} element={<Entry log={login} setLogin={setLogin}></Entry>}></Route>
-            {localStorage.userLogin + 57600000 > Date.now() || login === true ? (
+            {(Number(localStorage.userLogin) + 57600000) > Date.now() || login === true ? (
                 <Route path={"/"} element={<RootLayout />}>
                     <Route index element={<MainPage />} />
                     <Route path={"/menu"} element={<MenuPage />} />

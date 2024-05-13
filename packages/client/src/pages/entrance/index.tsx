@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC } from "react"
 import { Page } from "../../components/page"
 import { EntryForm } from "./components/entryForm"
 
