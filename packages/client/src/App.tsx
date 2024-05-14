@@ -27,7 +27,7 @@ const App = () => {
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             ) : (
-                "хуй"
+                ""
             )}
         </Routes>
     )
