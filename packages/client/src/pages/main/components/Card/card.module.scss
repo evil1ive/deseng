@@ -1,6 +1,44 @@
 .card {
-    min-height: 120px;
     background: var(--color-background);
 
     border-radius: 8px;
+    color: #000000;
+    padding: 10px 20px 10px 30px;
+    display: flex;  
+    align-items: center;
+}
+
+.word {
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    text-decoration: underline black;
+    color: inherit;
+}
+
+.transcription {
+    padding: 0 0 0 10px;
+    font-size: 15px;
+}
+
+.translation {
+    font-size: 17px;
+}
+
+.enpart, .rupart { 
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+}
+
+.youTubeIcon {
+    width: 18px;
+    margin: 0 4px 0 0;
+}
+
+.materialLink {
+    display: flex;
+    align-items: center; 
+    text-decoration: none;
+    color: var(--color-primary);   
 }

@@ -1,19 +1,21 @@
-import { FC, useState } from "react"
+import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
-import { UserProps } from "pages/entrance"
-import data from "../../../../assets/data/data.json"
-import { genSaltSync, hashSync } from "bcrypt-ts"
-
 import "./entryFrom.scss"
-
+import { IRootState, useAppDispatch } from "store/index"
+import { loginUser, registrateUser } from "store/auth/actionCreators"
+import { useSelector } from "react-redux"
 type MyForm = {
     login: string
     password: string
 }
 
-export const EntryForm: FC<UserProps> = (props) => {
+export const EntryForm = () => {
     const [formName, setFormName] = useState("form")
+    const isLoggedIn = useSelector(
+        (state: IRootState) => state.auth.authData
+    );
+    const dispatch = useAppDispatch();
     const {
         register,
         handleSubmit,
@@ -22,57 +24,23 @@ export const EntryForm: FC<UserProps> = (props) => {
         defaultValues: {},
         mode: "onChange",
     })
-    const [fetchError, setFetchError] = useState("none")
     const navigate = useNavigate()
 
     const submit: SubmitHandler<MyForm> = async (values) => {
-        console.log(data)
-        setFetchError("none")
-        console.log(formName, fetchError, values)
+      
         if (formName === "form registrate") {
-            let isNewUser = data.users.every((elem) => {
-                return elem.login === values.login ? false : true
-            })
-
-            if (isNewUser) {
-                let salt = genSaltSync(10)
-                let hash = hashSync(values.password, salt)
-                data.users.push({
-                    login: values.login,
-                    hash: hash,
-                    salt: salt,
-                })
-                data
-                localStorage.setItem("userLogin", Date.now().toString())
-                navigate("")
-                props.setLogin(true)
-            } else {
-                setFetchError("user are created")
-            }
+            await dispatch(registrateUser({ login:values.login, password:values.password }))
+            navigate("")
         } else {
-            let user = data.users.find((elem) => {
-                if (elem.login === values.login) {
-                    return true
-                } else false
-            })
-            if (user != undefined) {
-                let isUserAreCreated =
-                    hashSync(values.password, user.salt) === user?.hash ? true : false
-                if (isUserAreCreated) {
-                    localStorage.setItem("userLogin", Date.now().toString())
-                    props.setLogin(true)
-                } else {
-                    setFetchError("bad user")
-                }
-            } else {
-                setFetchError("bad user")
-            }
+            await dispatch(loginUser({ login:values.login, password:values.password }))
+            navigate("")
         }
     }
+
     return (
         <div className={"form-wrapper"}>
             <form onSubmit={handleSubmit(submit)}>
-                <label className="">
+                <label className="" htmlFor="login">
                     {formName.includes("registrate") ? "Регистрация" : "Авторизация"}
                 </label>
                 <div className={errors.login?.type}>
@@ -80,6 +48,7 @@ export const EntryForm: FC<UserProps> = (props) => {
                         className={"login " + errors.login?.type}
                         type="login"
                         placeholder="Логин"
+                        id="login"
                         {...register("login", {
                             required: true,
                             maxLength: 50,
@@ -122,11 +91,11 @@ export const EntryForm: FC<UserProps> = (props) => {
                     </button>
                 </div>
                 <label className="request-status">
-                    {fetchError === "bad user"
-                        ? "Неверный логин или пароль"
-                        : fetchError === "user are created"
+                    {isLoggedIn.message === "Network Error"
+                        ? "Проблемы с сетью"
+                        : isLoggedIn.message === "User with this login already exists"
                           ? "Данный логин занят"
-                          : ""}
+                          : isLoggedIn.message === null? "": "Неверный логин или пароль" }
                 </label>
             </form>
         </div>

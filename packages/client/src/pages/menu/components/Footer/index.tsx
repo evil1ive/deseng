@@ -1,12 +1,11 @@
-import { APP_BUILD_DATE, APP_VERSION } from "config/constants.ts"
+import { APP_VERSION } from "config/constants.ts"
 
-import Style from "./footer.module.scss"
+import "./footer.scss"
 
 export const Footer = () => {
     return (
-        <footer className={Style.footer}>
+        <footer className="footer">
             <span>{APP_VERSION}</span>
-            <span>{APP_BUILD_DATE.toLocaleString()}</span>
         </footer>
     )
 }

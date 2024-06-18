@@ -1,12 +1,23 @@
+import { config, DotenvParseOutput } from "dotenv"
+
 export type EnvConfig = {
-    env: "production" | "development"
     port: number
     mongodb_uri: string
+    access_key: string
+    refresh_key: string
 }
-process.env.NODE_ENV ??= "development"
 
 const Parser = () => {
     const errors: string[] = []
+    let conf:DotenvParseOutput
+    const {error, parsed} = config();    
+    if(error){
+        throw new Error(".env не найден")
+    }
+    else if(!parsed){
+        throw new Error('.env не заполнен');
+    }
+    conf = parsed;
     return {
         showErrorIfExist: () => {
             if (errors.length === 0) return
@@ -16,7 +27,7 @@ const Parser = () => {
             throw new Error(message)
         },
         getOrThrow<T = string>(key: string, defaultValue?: T) {
-            const value = process.env[key] ?? defaultValue
+            const value = conf[key] ?? defaultValue
             if (value === undefined) {
                 errors.push(`${key}=`)
                 return
@@ -30,9 +41,10 @@ export default (): EnvConfig => {
     const { getOrThrow, showErrorIfExist } = Parser()
 
     const env: EnvConfig = {
-        env: getOrThrow("NODE_ENV", "development"),
         port: parseInt(getOrThrow("PORT", "3000")),
         mongodb_uri: getOrThrow("MONGODB_URI"),
+        access_key:getOrThrow("ACCESS_SIGNATURE"),
+        refresh_key:getOrThrow("REFRESH_SIGNATURE")
     }
 
     showErrorIfExist()

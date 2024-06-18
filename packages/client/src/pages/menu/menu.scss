@@ -1,0 +1,16 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: no-repeat center/cover url("../../assets/images/persik\ placeholder.png") ;
+    font-size: 14px;
+    padding: 40px 0 0 0;
+
+    .username {
+        color: var(--color-background);
+        font-size: 16px;
+        padding: 0 0 10px 0;
+        text-decoration: underline 2px solid wheat;
+    }
+}

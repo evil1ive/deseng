@@ -7,7 +7,7 @@ import env from "@/config/env"
     imports: [
         ConfigModule.forRoot({
             load: [env],
-            envFilePath: `.${process.env.NODE_ENV}.env`,
+            envFilePath: `.env`,
             isGlobal: true,
         }),
     ],

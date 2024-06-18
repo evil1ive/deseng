@@ -1,0 +1,46 @@
+.card {
+    min-height: 120px;
+    background: var(--color-background);
+
+    border-radius: 8px;
+    color: #000000;
+    padding: 0 0 0 30px;
+    display: flex;  
+    align-items: center;
+}
+
+.word {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-primary); 
+}
+
+.transcription {
+    padding: 0 0 0 10px;
+    font-size: 15px;
+}
+
+.translation {
+    font-size: 17px;
+}
+
+.enpart, .rupart { 
+    display: flex;
+    flex-direction: row;
+}
+
+.speakButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    background-color: inherit;
+    border: none;
+}
+
+.voiceImage {
+    width: 16px;
+    height: 16px;
+}
+

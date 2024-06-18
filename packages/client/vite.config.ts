@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import { defineConfig, loadEnv } from "vite"
 import svgr from "vite-plugin-svgr"
 import tsconfigPaths from "vite-tsconfig-paths"
 import injectAttributes from "./plugins/injectAttributes"
@@ -23,19 +23,25 @@ export default defineConfig({
             manifest: {
                 name: "DesEng",
                 short_name: "DesEng",
+                description: "Приложения для помощи изучения английского дизайнерам",
                 theme_color: "#ffffff",
             },
+            
         }),
+        
     ],
+    define:{
+        __APP_ENV__:JSON.stringify(loadEnv('','.env'))
+    },
     server: {
         host: "0.0.0.0",
-        proxy: {
-            "/api": {
-                target: "http://127.0.0.1:3000/",
-                changeOrigin: true,
-                ws: true,
-                rewrite: (path) => path.replace(/^\/api/, ""),
-            },
-        },
+        // proxy: {
+        //     "/api": {
+        //         target: "http://127.0.0.1:3000/",
+        //         changeOrigin: true,
+        //         ws: true,
+        //         rewrite: (path) => path.replace(/^\/api/, ""),
+        //     },
+        // },
     },
-})
+}) 

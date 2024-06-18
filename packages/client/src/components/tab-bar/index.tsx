@@ -19,9 +19,9 @@ export const TabBar: FC = () => {
             />
             <TabBarItem
                 icon={<IconPen />}
-                label={"Задания"}
-                onClick={() => navigate("/tasks")}
-                selected={pathname === "/tasks"}
+                label={"Материалы"}
+                onClick={() => navigate("/materials")}
+                selected={pathname === "/materials"}
             />
             <TabBarItem
                 icon={<IconBook />}

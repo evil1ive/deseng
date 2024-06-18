@@ -3,31 +3,45 @@ import { RootLayout } from "pages/layout.tsx"
 import { MainPage } from "pages/main"
 import { MenuPage } from "pages/menu"
 import { NotFoundPage } from "pages/notfound"
-import { EntrancePage, UserProps } from "pages/entrance"
-import { FC, useState } from "react"
-
+import { EntrancePage } from "pages/entrance"
+import { IRootState, useAppDispatch } from "./store";
 import "styles/global.scss"
-
-export const Entry: FC<UserProps> = (props) => {
-    if (Number(localStorage.userLogin) + 57600000 > Date.now()) {
-    } else {
-        return <EntrancePage log={props.log} setLogin={props.setLogin}></EntrancePage>
-    }
-}
+import { useSelector } from "react-redux"
+import { Loader } from "pages/loader"
+import { useEffect, useRef } from "react"
+import { checkUserLog } from "store/auth/actionCreators"
+import { Dictionary } from "pages/dictionary"
+import { Materials } from "pages/materials"
 
 const App = () => {
-    const [login, setLogin] = useState(false)
+    const isLoggedIn = useSelector(
+        (state: IRootState) => !!state.auth.authData.accessToken
+    );
+    const isLoading = useSelector(
+        (state: IRootState) => state.auth.authData
+    );
+    const dispatch = useAppDispatch();
+    const hasMounted = useRef(false);
+    useEffect(() => {
+        if(!hasMounted.current){
+            hasMounted.current = true;
+            dispatch(checkUserLog())
+            
+        }
+    }, []);
+      
     return (
         <Routes>
-            <Route path={""} element={<Entry log={login} setLogin={setLogin}></Entry>}></Route>
-            {Number(localStorage.userLogin) + 57600000 > Date.now() || login === true ? (
+            { isLoading.isLoading ? <Route path={"*"} element={<Loader />}></Route> : isLoggedIn ? (
                 <Route path={"/"} element={<RootLayout />}>
                     <Route index element={<MainPage />} />
                     <Route path={"/menu"} element={<MenuPage />} />
+                    <Route path={"/dictionary"} element={<Dictionary />}></Route>
+                    <Route path={"/materials"} element={<Materials   />}></Route>
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             ) : (
-                ""
+                <Route path={"*"} element={<EntrancePage></EntrancePage>}></Route>  
             )}
         </Routes>
     )

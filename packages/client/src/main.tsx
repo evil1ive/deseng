@@ -1,25 +1,17 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { QueryClient, QueryClientProvider } from "react-query"
 import { BrowserRouter } from "react-router-dom"
-
 import App from "./App"
+import { Provider } from "react-redux"
+import { store } from "./store"
 
-const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            retry: false,
-            keepPreviousData: true,
-        },
-    },
-})
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Provider store={store}>
                 <App />
-            </BrowserRouter>
-        </QueryClientProvider>
-    </React.StrictMode>,
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>
 )
